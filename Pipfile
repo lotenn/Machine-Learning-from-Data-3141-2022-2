@@ -13,6 +13,7 @@ pandas = "*"
 seaborn = "*"
 scipy = "*"
 plotly = "*"
+scikit-image = "==0.19.2"
 
 [dev-packages]
 
