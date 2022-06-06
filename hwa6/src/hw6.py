@@ -117,3 +117,20 @@ def _select_random_row(X, init_centroids, n_chosen, prop=None):
     X = np.delete(X, rand_row, axis=0)
     n_chosen += 1
     return X, init_centroids, n_chosen
+
+
+def inertia(X, cent, labels):
+    X_dist = lp_distance(X, cent).T
+    N, d = X_dist.shape
+    return np.sum(X_dist[np.arange(N), labels] ** 2)
+
+
+def execution(algo, params):
+    """
+    Execute kmean algo with given params
+    :param algo:
+    :param params:
+    :return: inertia value of the results
+    """
+    cent, labels = algo(**params)
+    return inertia(params['X'], cent, labels)
